@@ -39,8 +39,8 @@ document.querySelector(".check").addEventListener("click", function () {
   
   else if (inputNum === guess) {
     displayMessage("You guessed right🥳");
-    document.querySelector("body").style.backgroundColor = "#60b347";
     confetti();
+    document.querySelector("body").style.backgroundColor = "#60b347";
     displayHighScore(score);
     questionMark(guess);
     document.querySelector(".questionmark").style.width = "190px";

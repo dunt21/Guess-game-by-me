@@ -19,14 +19,14 @@ function questionMark(parameter) {
   document.querySelector(".questionmark").textContent = parameter;
 }
 
-function confetti(){
-  const confettiVideo = document.querySelector('#confetti-video');
-  confettiVideo.style.display = 'block';
+function confetti() {
+  const confettiVideo = document.querySelector("#confetti-video");
+  confettiVideo.style.display = "block";
   confettiVideo.play();
 
-  confettiVideo.onended = function(){
-    confettiVideo.style.display = 'none';
-  }
+  confettiVideo.onended = function () {
+    confettiVideo.style.display = "none";
+  };
 }
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -35,9 +35,7 @@ document.querySelector(".check").addEventListener("click", function () {
   console.log(inputNum);
   if (!inputNum) {
     displayMessage("Input a Number❗");
-  } 
-  
-  else if (inputNum === guess) {
+  } else if (inputNum === guess) {
     displayMessage("You guessed right🥳");
     confetti();
     document.querySelector("body").style.backgroundColor = "#60b347";
@@ -45,35 +43,32 @@ document.querySelector(".check").addEventListener("click", function () {
     questionMark(guess);
     document.querySelector(".questionmark").style.width = "190px";
 
-    if (score > highscore){
-        highscore = score;
+    if (score > highscore) {
+      highscore = score;
     }
-
-  } 
-  
-  else if (inputNum != guess) {
+  } else if (inputNum != guess) {
     displayMessage(
       inputNum < guess ? "Number is too low 📉" : "Number is too high 📈"
     );
+    // document.querySelector('input').style.color = 'maroon';
     if (score > 1) {
       score--;
       displayScore(score);
     } else {
       displayMessage("You lost the game 🥲");
-      document.querySelector("body").style.backgroundColor = "red";
       displayScore(0);
     }
   }
 });
 
 document.querySelector(".again").addEventListener("click", function () {
-    guess = Math.trunc(Math.random() * 15 + 1);
-    console.log(guess);
-
-  highscore = 0;
+  guess = Math.trunc(Math.random() * 15 + 1);
+  console.log(guess);
   score = 20;
- displayMessage("Start guessing...");
+  highscore = 0;
+  displayMessage("Start guessing...");
   displayScore(score);
+  displayHighScore(highscore);
   document.querySelector("input").value = "";
   document.querySelector("body").style.backgroundColor = "#b07d62";
   questionMark("?");
